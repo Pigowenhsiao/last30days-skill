@@ -124,7 +124,9 @@ def available_sources(config: dict[str, Any], requested_sources: list[str] | Non
         available.append("perplexity")
     if requested_sources and "xiaohongshu" in requested_sources and env.is_xiaohongshu_available(config):
         available.append("xiaohongshu")
-    if env.is_threads_available(config):
+    if env.is_threads_available(config) or (
+        requested_sources and "threads" in requested_sources and config.get("SCRAPECREATORS_API_KEY")
+    ):
         available.append("threads")
     if requested_sources and "pinterest" in requested_sources and env.is_pinterest_available(config):
         available.append("pinterest")
