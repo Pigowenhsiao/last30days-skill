@@ -37,7 +37,7 @@ load_env_vars() {
       # command substitution in backtick-containing comments
       value="${value%%[[:space:]]#*}"
       if [[ -n "$key" && -n "$value" ]]; then
-        declare "ENV_${key}=${value}"
+        declare -g "ENV_${key}=${value}"
       fi
     done < "$file"
   fi
